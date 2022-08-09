@@ -23,7 +23,10 @@ spec:
         app.kubernetes.io/instance: java-quarkus
     spec:
       containers:
-      - image: quay.io/redhat-appstudio/user-workload:gazarenk-java-quarkus
+      - env:
+        - name: test
+          value: test
+        image: quay.io/redhat-appstudio/user-workload:gazarenk-java-quarkus
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
@@ -43,6 +46,4 @@ spec:
           requests:
             cpu: 10m
             memory: 100Mi
-      imagePullSecrets:
-      - name: appstudio-token-bbf1
 status: {}
